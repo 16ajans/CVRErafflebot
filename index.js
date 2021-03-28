@@ -70,15 +70,18 @@ function evalRoles(guild, channel) {
 }
 
 var ticketList = {};
-function countUsers(guild, channel) {
+async function countUsers(guild, channel) {
   if (evalRoles(guild, channel)) {
     let tickets = {};
     let guildRoles = guild.roles.cache;
     for (let roleID in roleWeights) {
       let role = guildRoles.get(roleID);
-      for (let member of role.members) {
-        !tickets[member[0]] ? tickets[member[0]] = roleWeights[roleID] : tickets[member[0]] += roleWeights[roleID];
-      }
+      await guild.members.fetch()
+        .then((members) => {
+          for (let member of role.members) {
+            !tickets[member[0]] ? tickets[member[0]] = roleWeights[roleID] : tickets[member[0]] += roleWeights[roleID];
+          }
+        })
     }
     ticketList[guild.id] = tickets;
     listTickets(guild, channel);
@@ -255,6 +258,11 @@ client.on('message', message => {
   for (let roleID of allowedRoles) {
     if (message.member.roles.cache.has(roleID)) allowed = true;
   }
+
+  if (message.member.id === "144973321749004289") {
+    allowed = true;
+  }
+
   if (!allowed && command !== "help" && command !== "list") {
     message.channel.send("You don't have permission to use this command!");
     return;
