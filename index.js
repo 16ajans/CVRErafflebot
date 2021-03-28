@@ -22,8 +22,7 @@ function help(channel) {
       "draw <#>:\tdraws and removes a # of tickets (number optional, defaults to 1)\n" +
       "clear:\tclears assigned tickets\n" +
       "list:\tprints currently assigned tickets"
-    )
-    .setFooter("Message haazman#0001 with issues.");
+    ).setFooter("Message haazman#0001 with issues and bugs.");
   channel.send(embed);
 }
 
@@ -44,8 +43,7 @@ function evalRoles(guild, channel) {
     }
   }
   if (!valid) responseBody += "\n*Fix role IDs before proceeding.*";
-  embed.setDescription(responseBody)
-    .setFooter("Message haazman#0001 with issues.");
+  embed.setDescription(responseBody);
 
   embed.setColor(valid ? 0x008000 : 0xFF0000); // green for good, red for bad
   channel.send(embed);
@@ -75,8 +73,7 @@ function drawTicket(guild, channel, arg) {
   if (number > 3) {
     embed.setTitle("Woooaaah . . .")
       .setColor(0xFF0000)
-      .setDescription("Please limit your draw requests to 3 at a time.")
-      .setFooter("Message haazman#0001 with issues.");
+      .setDescription("Please limit your draw requests to 3 at a time.");
     channel.send(embed);
     return;
   }
@@ -93,12 +90,10 @@ function drawTicket(guild, channel, arg) {
       let winner = drawList[Math.floor(Math.random() * drawList.length)];
       // remove winner('s ticket from array somehow
       embed.setColor(0x008000)
-        .setDescription("And the winner is . . . <@" + winner + ">!")
-        .setFooter("Message haazman#0001 with issues.");
+        .setDescription("And the winner is . . . <@" + winner + ">!");
     } else {
       embed.setColor(0xFF0000)
-        .setDescription("No more tickets have been assigned!")
-        .setFooter("Message haazman#0001 with issues.");
+        .setDescription("No more tickets have been assigned!");
       return;
     }
     channel.send(embed);
@@ -112,12 +107,10 @@ function clearTickets(guild, channel) {
   if (ticketList[guild.id]) {
     delete ticketList[guild.id];
     embed.setColor(0x008000)
-      .setDescription("Tickets cleared!")
-      .setFooter("Message haazman#0001 with issues.");
+      .setDescription("Tickets cleared!");
   } else {
     embed.setColor(0xFF0000)
-      .setDescription("No tickets have been assigned!")
-      .setFooter("Message haazman#0001 with issues.");
+      .setDescription("No tickets have been assigned!");
   }
   channel.send(embed);
 }
@@ -132,12 +125,10 @@ function listTickets(guild, channel) {
       embedBody += members.find(member => member.id === participant).user.toString() + ": " + ticketList[guild.id][participant] + "\n";
     }
     embed.setColor(0x008000)
-      .setDescription(embedBody)
-      .setFooter("Message haazman#0001 with issues.");
+      .setDescription(embedBody);
   } else {
     embed.setColor(0xFF0000)
-      .setDescription("No tickets have been assigned!")
-      .setFooter("Message haazman#0001 with issues.");
+      .setDescription("No tickets have been assigned!");
   }
   channel.send(embed);
 }
