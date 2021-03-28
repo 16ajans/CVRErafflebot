@@ -7,6 +7,9 @@ const client = new Discord.Client();
 
 client.once('ready', () => {
   console.log('Ready!');
+  client.user.setActivity("for \"" + prefix + " help\"", { type: 'WATCHING' })
+    .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+    .catch(console.error);
 });
 
 function help(guild, channel) {
