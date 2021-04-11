@@ -34,6 +34,7 @@ function help(guild, channel) {
       "\n__Commands:__\n" +
       "**help**: prints this embed\n" +
       "**list**: prints currently assigned tickets\n" +
+      "**flip**: prints result of a coin flip\n" +
       "\n__Privileged Commands:__\n" +
       // "eval: validates server roles and weights\n" +
       "**count**: counts member roles and assigns tickets\n" +
