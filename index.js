@@ -244,6 +244,19 @@ function removeTicket(guild, channel, args) {
   }
 }
 
+function flipCoin(channel) {
+    const embed = new Discord.MessageEmbed()
+    .setTitle("Flipping a coin . . .")
+    .setColor(0x008000);
+  let x = (Math.floor(Math.random() * 2) == 0);
+    if(x){
+    	embed.setDescription("Heads!");
+    }else{
+      embed.setDescription("Tails!");
+    }
+  channel.send(embed);
+}
+
 function notACommand(channel) {
   channel.send("Not a valid command! Use \"" + prefix + " help\" for help.");
 }
