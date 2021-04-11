@@ -276,7 +276,7 @@ client.on('message', message => {
     allowed = true;
   }
 
-  if (!allowed && command !== "help" && command !== "list") {
+  if (!allowed && command !== "help" && command !== "list" && command !== "flip") {
     message.channel.send("You don't have permission to use this command!");
     return;
   }
