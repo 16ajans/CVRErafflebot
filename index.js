@@ -309,6 +309,9 @@ client.on('message', message => {
     case "remove":
       removeTicket(message.guild, message.channel, args);
       break;
+    case "flip":
+      flipCoin(message.channel);
+      break;
     default:
       notACommand(message.channel);
   }
