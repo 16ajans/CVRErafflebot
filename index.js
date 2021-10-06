@@ -42,7 +42,7 @@ function help(guild, channel) {
       "**clear**: clears assigned tickets\n" +
       "**add [MEMBER] <#>**: assigns # tickets to MEMBER (number optional, defaults to 1)\n" +
       "**remove [MEMBER] <#>**: removes # assigned tickets from MEMBER (number optional, defaults to 1)\n"
-    ).setFooter("Message haazman#0001 with issues and bugs.");
+    ).setFooter("Message haazman#4309 with issues and bugs.");
   channel.send(embed);
 }
 
