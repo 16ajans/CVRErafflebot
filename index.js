@@ -78,6 +78,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 			}
 		}
 		if (interaction.commandName === 'draw') {
+			if (pool.length > 0) {
 			let n = interaction.options.getInteger('tickets') || 1
 			let winners = []
 			for (n; n > 0; n--) {
@@ -89,6 +90,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 			}
 			let tags = winners.map(winner => '<@' + winner + '>')
 			interaction.reply(`Drawn winners:\n${tags.join(`\n`)}`)
+		} else {interaction.reply(`There aren't any tickets to draw from!`) }
 		}
 		if (interaction.commandName === 'pool') {
 			interaction.reply(`There are **${new Set(pool).size}** users with a total of **${pool.length}** tickets in the drawing pool.`)
