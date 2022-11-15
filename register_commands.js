@@ -103,11 +103,16 @@ const commands = [
         description: 'Draws tickets from the raffle pool.',
         options: [
             {
-                name: "number",
+                name: "tickets",
                 description: "Number of tickets to be drawn.",
                 type: 4
             }
         ]
+    },
+    {
+        name: 'clear',
+        type: 1,
+        description: 'Clears all tickets from the raffle pool.'
     }
 ];
 
