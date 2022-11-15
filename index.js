@@ -98,7 +98,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 			interaction.reply(`There are now **${new Set(pool).size}** users with a total of **${pool.length}** tickets in the drawing pool.`)
 		}
 
-	} else { interaction.reply('You do not have permission to run this command.')}
+	} else { interaction.reply({ content: 'You do not have permission to run this command.', ephemeral: true })}
 })
 
 client.login(process.env.BOT_TOKEN);
